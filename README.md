@@ -9,7 +9,7 @@ A list of things happening in this app:
 ##Tutorials and Things to remember:
 * install MongDB on c9: [here](https://community.c9.io/t/setting-up-mongodb/1717)
 * update MongoDB on c9 to 3.x: [here](https://community.c9.io/t/updating-mongodb/3914)
-* 
+
 The commands in the update tutorial should be changed as follows: 
 
 ```

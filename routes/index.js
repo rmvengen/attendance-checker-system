@@ -12,25 +12,33 @@ mongoose.Promise = global.Promise;
 var studentSchema = new mongoose.Schema({
     buffID: String,
     firstName: String,
-    lastName: String
+    lastName: String,
+    timesPresent : String,
+    timesAbsent : String,
+    percentagePresent: String
 });
 
-var Student = mongoose.model('Student', studentSchema);
+var Student = mongoose.model('StudentData', studentSchema);
 
-router.get('/add-random-student', function(req, res, next){
+router.get('/add/:firstname/:lastname', function(req, res, next){
     
     var rand = new Student(
         { 
             buffID:     '0123456',
-            firstname:  'Random', 
-            lastName:   'Student'
+            firstName:  req.params.firstname, 
+            lastName:   req.params.lastname
         }
     );
     rand.save(function (err) {
         if (err) {
             console.log(err);
+            res.send('There was an error');
         } else {
-         console.log('The student is saved in the db');
+         var message = req.params.firstname + ' ' + 
+                       req.params.lastname + ' is saved in the db';
+         console.log(message);
+         res.send(message);
+         
       }
     });
 });
